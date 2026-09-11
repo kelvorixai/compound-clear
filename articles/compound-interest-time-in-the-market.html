@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compound Interest: The Actual Math Behind "Time in the Market" | CompoundClear</title>
+<meta name="description" content="A plain-English breakdown of how compound interest actually works, why time matters more than the amount you contribute, and where the &quot;time in the market&quot; advice comes from.">
+<link rel="canonical" href="https://kelvorixai.github.io/compound-clear/articles/compound-interest-time-in-the-market.html">
+<meta property="og:title" content="Compound Interest: The Actual Math Behind &quot;Time in the Market&quot;">
+<meta property="og:description" content="Why time matters more than the amount you contribute — with the actual numbers worked out.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kelvorixai.github.io/compound-clear/articles/compound-interest-time-in-the-market.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">CompoundClear</a>
+    <nav class="site">
+      <a href="../index.html">Guides</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <header class="meta">
+      <span class="tag">The Mechanics</span>
+      <h1>Compound interest: the actual math behind "time in the market"</h1>
+      <p class="dek">"Time in the market beats timing the market" gets repeated so often it stops meaning anything specific. Here's the arithmetic underneath it — and why the number of years you're invested tends to matter more than the amount you put in.</p>
+    </header>
+
+    <div class="content">
+      <p>Compound interest is simple interest's less intuitive sibling. With simple interest, you earn a return only on your original amount, every period. With compound interest, each period's return gets added to the balance, and the next period's return is calculated on that new, larger balance. The gap between the two looks small at first and gets large precisely because it's exponential, not linear.</p>
+
+      <h2>The formula, and why the exponent does the work</h2>
+      <p>The standard formula for compound growth is <strong>A = P × (1 + r)^t</strong>, where P is your starting amount, r is the periodic return, and t is the number of periods. The part that matters most for intuition is that t is an exponent, not a multiplier — it doesn't scale the outcome, it repeatedly re-scales it. Here's $10,000 growing at a steady 7% a year (a commonly cited long-run average for a diversified stock portfolio, before inflation), with nothing added or withdrawn:</p>
+
+      <table>
+        <thead><tr><th>Years invested</th><th>Balance</th><th>Growth</th></tr></thead>
+        <tbody>
+          <tr><td>10</td><td>$19,672</td><td>+97%</td></tr>
+          <tr><td>20</td><td>$38,697</td><td>+287%</td></tr>
+          <tr><td>30</td><td>$76,123</td><td>+661%</td></tr>
+          <tr><td>40</td><td>$149,745</td><td>+1,397%</td></tr>
+        </tbody>
+      </table>
+      <p>Doubling the number of years roughly quadruples the balance, not doubles it — that's the exponent, not a coincidence. A quick mental shortcut for this is the "Rule of 72": divide 72 by your annual rate to estimate the years it takes to double. At 7%, that's about 10.3 years, which lines up with the table — ten years gets you close to double, twenty gets you close to two doublings (roughly 4x).</p>
+
+      <h2>Why time usually beats amount contributed</h2>
+      <p>Because growth compounds on itself, money invested earlier gets more compounding cycles than money invested later — even if there's less of it. Here's a common illustration using round numbers (hypothetical, ignoring taxes, fees, and inflation for clarity):</p>
+      <ul>
+        <li><strong>Early Investor:</strong> invests $3,000 a year for 10 years only, then stops contributing and leaves the balance untouched for another 30 years. Total contributed: $30,000.</li>
+        <li><strong>Late Investor:</strong> invests $3,000 a year for 30 years straight, catching up in total contributions. Total contributed: $90,000.</li>
+      </ul>
+      <p>At a steady 7% a year, the Early Investor ends up with roughly <strong>$315,000</strong>. The Late Investor, despite contributing three times as much money, ends up with roughly <strong>$283,000</strong>. The Early Investor's money simply had more years to compound — a decade of contributions made in your twenties can end up outperforming three decades of contributions made later, purely on the strength of extra compounding time.</p>
+
+      <h2>Where "time in the market beats timing the market" comes from</h2>
+      <p>The phrase is a reaction to a specific temptation: trying to jump in and out of markets to dodge downturns and catch upswings. The problem is that a market's best days and worst days tend to cluster close together, often during volatile stretches — so an investor who sits in cash to avoid the bad days frequently ends up missing the good ones too, since nobody can reliably time the difference in advance. Staying invested through the full stretch — years, not days — is what lets the compounding math above actually play out, instead of resetting every time you exit and re-enter.</p>
+
+      <h2>Where the assumptions break down</h2>
+      <p>The math is correct, but it rests on conditions that don't always hold in practice:</p>
+      <ul>
+        <li><strong>Fees quietly reduce r.</strong> A 1% annual fee doesn't sound like much, but it compounds against you the same way returns compound for you — over 30 years it can consume a meaningful share of the final balance.</li>
+        <li><strong>Inflation reduces the real result.</strong> A 7% nominal return in a period of 3% inflation is closer to a 4% real return in terms of actual purchasing power — the table above isn't inflation-adjusted.</li>
+        <li><strong>Returns aren't actually steady.</strong> Real markets go up and down unevenly; a smooth 7%-a-year line is a simplification for illustrating the mechanism, not a forecast.</li>
+        <li><strong>Needing the money early breaks the horizon.</strong> If you have to withdraw during a downturn rather than staying invested through it, you lock in a loss instead of riding out the recovery — this is often called sequence-of-returns risk.</li>
+      </ul>
+
+      <div class="disclaimer">Educational content only — not financial, tax, or legal advice. The figures above are hypothetical illustrations of how compounding works, not a forecast or a guarantee of any specific return. For decisions specific to your situation, speak with a licensed financial advisor.</div>
+    </div>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>CompoundClear</span>
+    <span><a href="../index.html">More guides</a></span>
+    <span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
