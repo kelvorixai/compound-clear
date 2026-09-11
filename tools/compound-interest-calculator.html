@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6051499531677717" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compound Interest Calculator — See How Your Money Grows | CompoundClear</title>
+<meta name="description" content="Free compound interest calculator. Enter your starting amount, monthly contribution, interest rate, and years to see your projected balance instantly.">
+<link rel="canonical" href="https://kelvorixai.github.io/compound-clear/tools/compound-interest-calculator.html">
+<meta property="og:title" content="Compound Interest Calculator — See How Your Money Grows">
+<meta property="og:description" content="Enter your starting amount, monthly contribution, interest rate, and years for an instant projection.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .calc{ border:1px solid var(--line); padding:28px 26px; margin-top:28px; background:var(--paper-raised); }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+  .field label{ font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:500; }
+  .field input{
+    font: inherit; font-size:16px; padding:11px 12px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink); border-radius:2px; width:100%;
+  }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:480px){ .field-row{ grid-template-columns:1fr; } }
+  button.calc-btn{
+    font: inherit; font-size:15px; font-weight:600; background:var(--teal); color:var(--paper);
+    border:none; padding:13px 22px; border-radius:2px; cursor:pointer; width:100%;
+  }
+  button.calc-btn:hover{ background:var(--teal-soft); }
+  .result{ margin-top:26px; padding:22px 24px; border:1px solid var(--brass); border-left:4px solid var(--brass); background:var(--paper); display:none; }
+  .result.show{ display:block; }
+  .result .amount{ font-family:"Fraunces", serif; font-size:2.4rem; font-weight:700; color:var(--brass-strong); font-variant-numeric:tabular-nums; }
+  .result .amount span{ font-size:1.1rem; font-family:"IBM Plex Sans", sans-serif; font-weight:500; color:var(--ink-soft); }
+  .result .breakdown{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); font-family:"IBM Plex Mono", monospace; line-height:1.8; }
+  .share-btn{
+    margin-top:16px; font: inherit; font-size:13px; background:none; color:var(--teal-soft);
+    border:1px solid var(--teal-soft); padding:8px 14px; border-radius:2px; cursor:pointer;
+  }
+  .share-btn:hover{ background:var(--teal-soft); color:var(--paper); }
+  .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">CompoundClear</a>
+    <nav class="site">
+      <a href="../index.html">Guides</a>
+      <a href="index.html">Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <header class="meta">
+      <span class="tag">Tool</span>
+      <h1>Compound interest calculator</h1>
+      <p class="dek">Enter a starting amount, a monthly contribution, an interest rate, and a number of years to see how the balance grows — and how much of the total is your own money versus what compounding adds.</p>
+    </header>
+
+    <div class="calc">
+      <div class="field">
+        <label for="principal">Starting amount</label>
+        <input type="number" id="principal" inputmode="decimal" placeholder="e.g. 5000" min="0" step="any">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="monthly">Monthly contribution</label>
+          <input type="number" id="monthly" inputmode="decimal" placeholder="e.g. 300" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="rate">Annual interest rate (%)</label>
+          <input type="number" id="rate" inputmode="decimal" placeholder="e.g. 7" min="0" step="any">
+        </div>
+      </div>
+      <div class="field">
+        <label for="years">Number of years</label>
+        <input type="number" id="years" inputmode="numeric" placeholder="e.g. 20" min="0" step="1">
+      </div>
+
+      <button class="calc-btn" id="calcBtn" type="button">Calculate my projection</button>
+
+      <div class="result" id="result">
+        <div class="amount"><span>Projected balance: </span><span id="amountValue">0</span></div>
+        <div class="breakdown" id="breakdown"></div>
+        <button class="share-btn" id="shareBtn" type="button">Copy result to share</button>
+      </div>
+    </div>
+
+    <div class="content" style="margin-top:36px;">
+      <h2>How this is calculated</h2>
+      <p>This uses the standard compound-interest formula, compounding monthly, with your monthly contribution added at the end of each month:</p>
+      <ul>
+        <li><strong>Growth on your starting amount:</strong> starting amount × (1 + rate/12)<sup>months</sup></li>
+        <li><strong>Growth on contributions:</strong> each monthly contribution compounds for the months remaining after it's added</li>
+        <li><strong>Total interest earned</strong> is the projected balance minus everything you actually put in (starting amount + all contributions)</li>
+      </ul>
+      <p class="formula-note">This is a mathematical projection based on a fixed, unchanging interest rate — real investments fluctuate year to year, and this doesn't account for taxes, fees, or inflation. It's a tool for understanding the mechanics of compounding, not a guarantee or a forecast of actual returns.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>CompoundClear</span>
+    <span>Also from Kelvorix AI: <a href="https://kelvorixai.github.io/">see all our sites</a></span>
+    <span>Educational content only — not financial, tax, or legal advice.</span>
+    <span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var calcBtn = document.getElementById('calcBtn');
+  var shareBtn = document.getElementById('shareBtn');
+  var resultEl = document.getElementById('result');
+  var amountEl = document.getElementById('amountValue');
+  var breakdownEl = document.getElementById('breakdown');
+  var lastSummary = '';
+
+  function fmt(n){
+    return n.toLocaleString('en-US', {maximumFractionDigits: 0});
+  }
+
+  calcBtn.addEventListener('click', function(){
+    var principal = parseFloat(document.getElementById('principal').value) || 0;
+    var monthly = parseFloat(document.getElementById('monthly').value) || 0;
+    var ratePct = parseFloat(document.getElementById('rate').value) || 0;
+    var years = parseFloat(document.getElementById('years').value) || 0;
+
+    if ((principal <= 0 && monthly <= 0) || years <= 0) {
+      breakdownEl.textContent = '';
+      amountEl.textContent = 'Enter your numbers above';
+      resultEl.classList.add('show');
+      shareBtn.style.display = 'none';
+      return;
+    }
+
+    var r = ratePct / 100;
+    var n = 12;
+    var months = Math.round(years * n);
+    var i = r / n;
+
+    var fvPrincipal, fvContrib;
+    if (i === 0) {
+      fvPrincipal = principal;
+      fvContrib = monthly * months;
+    } else {
+      var growth = Math.pow(1 + i, months);
+      fvPrincipal = principal * growth;
+      fvContrib = monthly * ((growth - 1) / i);
+    }
+
+    var total = fvPrincipal + fvContrib;
+    var contributed = principal + (monthly * months);
+    var interest = total - contributed;
+
+    var lines = [];
+    lines.push('Total contributed: ' + fmt(contributed));
+    lines.push('Total interest earned: ' + fmt(interest));
+    lines.push('Over ' + months + ' months at ' + ratePct + '% annual, compounded monthly');
+
+    amountEl.textContent = fmt(Math.round(total));
+    breakdownEl.innerHTML = lines.join('<br>');
+    resultEl.classList.add('show');
+    shareBtn.style.display = 'inline-block';
+    lastSummary = 'Compound interest projection: starting with ' + fmt(principal) + ' plus ' + fmt(monthly) + '/month at ' + ratePct + '% for ' + years + ' years grows to ' + fmt(Math.round(total)) + '. Try it yourself: https://kelvorixai.github.io/compound-clear/tools/compound-interest-calculator.html';
+  });
+
+  shareBtn.addEventListener('click', function(){
+    if (!lastSummary) return;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(lastSummary).then(function(){
+        shareBtn.textContent = 'Copied!';
+        setTimeout(function(){ shareBtn.textContent = 'Copy result to share'; }, 1800);
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
+
