@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TikTok Authorization</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background:#0B1F3A; color:#fff; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; padding:20px; box-sizing:border-box; }
+  .card { background:#14345C; border-radius:12px; padding:32px; max-width:640px; width:100%; }
+  h1 { font-size:20px; margin-top:0; }
+  .field { margin-bottom:16px; }
+  label { display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:#9fb3cc; margin-bottom:4px; }
+  .value { background:#0B1F3A; border-radius:6px; padding:10px 12px; word-break:break-all; font-family:monospace; font-size:14px; }
+  .error { color:#ff8080; }
+  button { background:#F5C542; color:#14345C; border:none; border-radius:6px; padding:10px 16px; font-weight:600; cursor:pointer; margin-top:8px; }
+  button:hover { opacity:0.9; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>TikTok authorization result</h1>
+    <div id="content"></div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+    const error = params.get('error');
+    const errorDesc = params.get('error_description');
+    const container = document.getElementById('content');
+
+    function field(labelText, value, isError) {
+      const div = document.createElement('div');
+      div.className = 'field';
+      const label = document.createElement('label');
+      label.textContent = labelText;
+      const val = document.createElement('div');
+      val.className = 'value' + (isError ? ' error' : '');
+      val.textContent = value;
+      div.appendChild(label);
+      div.appendChild(val);
+      return div;
+    }
+
+    if (error) {
+      container.appendChild(field('Error', error, true));
+      if (errorDesc) container.appendChild(field('Description', errorDesc, true));
+    } else if (code) {
+      container.appendChild(field('Authorization code (copy this)', code, false));
+      if (state) container.appendChild(field('State', state, false));
+      const btn = document.createElement('button');
+      btn.textContent = 'Copy code';
+      btn.onclick = () => navigator.clipboard.writeText(code);
+      container.appendChild(btn);
+    } else {
+      container.appendChild(field('Status', 'No authorization code or error was present in the URL.', true));
+    }
+  </script>
+</body>
+</html>
