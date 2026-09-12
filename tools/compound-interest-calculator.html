@@ -40,7 +40,70 @@
   }
   .share-btn:hover{ background:var(--teal-soft); color:var(--paper); }
   .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+  .faq{ margin-top:36px; }
+  .faq details{ border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-bottom:10px; background:var(--paper-raised); }
+  .faq summary{ cursor:pointer; font-weight:600; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; float:right; color:var(--ink-soft); }
+  .faq details[open] summary::after{ content:"\2013"; }
+  .faq p{ margin-top:10px; font-size:14.5px; color:var(--ink-soft); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this calculator compound monthly or annually?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly — the standard convention for most savings and investment accounts. The annual rate you enter is divided by 12 and applied each month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my monthly contribution added before or after that month's interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After — each contribution is added at the end of the month, so it starts earning interest the following month rather than the month it's deposited."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much of my final balance is actually my own money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your total contributed amount is the starting amount plus every monthly contribution added over the period. Everything above that in the projected balance is interest the money earned through compounding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this calculator account for taxes, fees, or inflation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — it's a mathematical projection at a fixed, unchanging interest rate. Real investments fluctuate year to year and this tool doesn't adjust for taxes, fees, or inflation."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Compound Interest Calculator",
+  "url": "https://kelvorixai.github.io/compound-clear/tools/compound-interest-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "AED"
+  },
+  "description": "Free calculator that projects compound interest growth from a starting amount, monthly contributions, and an interest rate, compounded monthly over a chosen number of years."
+}
+</script>
 </head>
 <body>
 
@@ -101,6 +164,26 @@
         <li><strong>Total interest earned</strong> is the projected balance minus everything you actually put in (starting amount + all contributions)</li>
       </ul>
       <p class="formula-note">This is a mathematical projection based on a fixed, unchanging interest rate — real investments fluctuate year to year, and this doesn't account for taxes, fees, or inflation. It's a tool for understanding the mechanics of compounding, not a guarantee or a forecast of actual returns.</p>
+    </div>
+
+    <div class="content faq" style="margin-top:36px;">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>Does this calculator compound monthly or annually?</summary>
+        <p>Monthly — the standard convention for most savings and investment accounts. The annual rate you enter is divided by 12 and applied each month.</p>
+      </details>
+      <details>
+        <summary>Is my monthly contribution added before or after that month's interest?</summary>
+        <p>After — each contribution is added at the end of the month, so it starts earning interest the following month rather than the month it's deposited.</p>
+      </details>
+      <details>
+        <summary>How much of my final balance is actually my own money?</summary>
+        <p>Your total contributed amount is the starting amount plus every monthly contribution added over the period. Everything above that in the projected balance is interest the money earned through compounding.</p>
+      </details>
+      <details>
+        <summary>Does this calculator account for taxes, fees, or inflation?</summary>
+        <p>No — it's a mathematical projection at a fixed, unchanging interest rate. Real investments fluctuate year to year and this tool doesn't adjust for taxes, fees, or inflation.</p>
+      </details>
     </div>
   </article>
 </main>
@@ -186,4 +269,3 @@
 
 </body>
 </html>
-
